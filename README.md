@@ -18,12 +18,15 @@ dsh plugin --profile desktop add github:yuzhou1227/dsh-appearance
 dsh plugin --profile desktop remove @yuzhou1227/dsh-appearance
 ```
 
-## 开发
+## 开发 / 迭代
 
-- `lib/client.js` — 插件全部实现（`window.__ModuleLoader__.load` 静态 bundle 格式）
-- `lib/index.js` — 最小 host 半区（纯客户端插件，无 host 逻辑）
+对已安装用户：修改后 `git push`，然后 `dsh plugin --profile desktop update @yuzhou1227/dsh-appearance`，重启 DSH 生效。
+
+- `lib/client.js` — 插件全部界面逻辑（`window.__ModuleLoader__.load` 静态 bundle 格式；**load 的 id 必须等于完整包名**）
+- `lib/index.js` — host 半区：`ctx.settings` 命名空间持久化设置（桌面端 renderer 的 localStorage 不持久，设置必须走 host）+ `/api/dsh-appearance/get|set` 同源路由
 - `cordis.patch.yml` — bundle 注册（插入 web 插件名册）
-- 设置持久化在浏览器 `localStorage`（键 `dsh.appearance.v1`）
+- 设置链路：改设置 → localStorage（缓存）+ POST host；启动 → DOM 就绪后 GET host 回灌（带重试，host 路由可能晚于 bundle 注册）
+- 设置持久化在宿主设置文档（`~/.dsh/settings.yaml` 的 `appearance.data`）
 
 ## License
 
