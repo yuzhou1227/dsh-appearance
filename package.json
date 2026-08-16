@@ -21,6 +21,9 @@
     }
   },
   "license": "MIT",
+  "dependencies": {
+    "schemastery": "^3.18.0"
+  },
   "peerDependencies": {
     "react": "^18.2.0"
   },
