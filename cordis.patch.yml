@@ -1,0 +1,6 @@
+# dsh-appearance bundle patch: inserts its dshClient row into the web plugin roster.
+# Install it with:
+#   dsh plugin --profile <name> add github:yuzhou1227/dsh-appearance
+- insert:
+    - id: dsh-appearance
+      name: '@yuzhou1227/dsh-appearance'

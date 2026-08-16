@@ -1,0 +1,36 @@
+{
+  "name": "@yuzhou1227/dsh-appearance",
+  "description": "DSH Web GUI appearance settings: light/dark theme mode, 42 built-in palettes (oc-themes + custom), custom theme JSON import/export, window controls, localization, density & fonts, app install and mobile settings. Settings → Appearance.",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
+    }
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuzhou1227/dsh-appearance.git"
+  }
+}
